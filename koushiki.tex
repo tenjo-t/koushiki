@@ -1,0 +1,150 @@
+\documentclass[a4paper,uplatex,dvi=dvipdfmx,ja=standard]{bxjsarticle}
+
+\usepackage{amsmath,amssymb}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[subrefformat=parens]{subcaption}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+% \usepackage{lmodern}
+\usepackage{newtxtext}
+\usepackage[deluxe,uplatex]{otf}
+\usepackage[sourcehan-jp]{pxchfon}
+\setmediumgothicfont{SourceHanSansJP-Medium.otf}
+\renewcommand{\headfont}{\sffamily\gtfamily\mdseries}
+% \definecolor{myblue}{rgb}{0,0,0.75}
+% \definecolor{mygreen}{rgb}{0,0.45,0}
+% \hypersetup{linkcolor=myblue,urlcolor=myblue}
+\newcommand{\bm}[1]{{\mbox{\boldmath $#1$}}}
+\numberwithin{equation}{section}
+
+\begin{document}
+\title{公式集}
+\author{Tenjo Takashi}
+\date{ver.\enspace1.0.1}
+\maketitle
+\tableofcontents
+
+\section{ベクトル解析（微分なし）}
+\subsection{三重積など}
+\begin{align}
+  & \bm{A}\cdot(\bm{B}\times\bm{C})=\bm{B}\cdot(\bm{C}\times\bm{A})=\bm{C}\cdot(\bm{A}\times\bm{B})\equiv[ABC] \label{eq-1.1} \\[0.5em]
+  & \bm{A}\times(\bm{B}\times\bm{C})=(\bm{A}\cdot\bm{C})\bm{B}-(\bm{A}\cdot\bm{B})\bm{C} \label{eq-1.2} \\[0.5em]
+  & \bm{A}\times(\bm{B}\times\bm{C})+\bm{B}\times(\bm{C}\times\bm{A})+\bm{C}\times(\bm{A}\times\bm{B})=0 \label{eq-1.3} \\[0.5em]
+  & (\bm{A}\times\bm{B})\cdot(\bm{C}\times\bm{D})=(\bm{A}\cdot\bm{C})(\bm{B}\cdot\bm{D})-(\bm{B}\cdot\bm{C})(\bm{A}\cdot\bm{D}) \label{eq-1.4} \\[0.5em]
+  & (\bm{A}\times\bm{B})\cdot(\bm{C}\times\bm{D})=\bm{A}\cdot(\bm{B}\times(\bm{C}\times\bm{D})) \label{eq-1.5} \\[0.5em]
+  &\begin{aligned}
+    (\bm{A}\times\bm{B})\times(\bm{C}\times\bm{D})&=[ABD]\bm{C}-[ABC]\bm{D} \\
+    & =[CDA]\bm{B}-[CDB]\bm{A}
+  \end{aligned} \label{eq-1.6} \\[0.5em]
+  & (\bm{A}\times\bm{B})\cdot(\bm{B}\times\bm{C})\times(\bm{C}\times\bm{A})=[ABC]^2 \label{eq-1.7}
+\end{align}
+
+\subsection{証明}
+\paragraph{式(\ref{eq-1.2})}
+\begin{align*}
+  {\bm{A}\times(\bm{B}\times\bm{C})}_x&=a_y(\bm{B}\times\bm{C})_z-a_z(\bm{B}\times\bm{C})_y \\
+  &= a_y(b_xc_y-b_yc_x)-a_z(b_zc_x-b_xc_z) \\
+  &= (a_yb_xc_y+a_zb_xc_z)-(a_yb_yc_x+a_zb_zc_x) \\
+  &= b_x(a_xc_x+a_yc_y+a_zc_z)-c_x(a_xb_x+a_yb_y+a_zb_z)
+\end{align*}
+
+\section{ベクトル解析（微分あり）}
+\subsection{2階微分}
+\begin{align}
+  & \nabla\times(\nabla\phi)=0 \label{eq-2.1} \\[0.5em]
+  & \nabla\cdot(\nabla\times\bm{A})=0 \label{eq-2.2} \\[0.5em]
+  & \nabla\times(\nabla\times\bm{A})=\nabla(\nabla\cdot\bm{A})-\nabla^2\bm{A} \label{eq-2.3} \\[0.5em]
+  & \nabla\cdot(\phi\nabla\psi)=\nabla\phi\cdot\nabla\psi+\phi\nabla^2\psi \label{eq-2.4} \\[0.5em]
+  & \nabla\cdot(\phi\nabla\psi-\psi\nabla\phi)=\phi\nabla^2\psi-\psi\nabla^2\phi \label{eq-2.5} \\[0.5em]
+  & \nabla^2(\phi\psi)=\phi\nabla^2\psi+2\nabla\phi\cdot\nabla\psi+\psi\nabla^2\phi \label{eq-2.6}
+\end{align}
+
+\subsection{分配法則}
+\begin{align}
+  & \nabla(\phi+\psi)=\nabla\phi+\nabla\psi \label{eq-2.7} \\[0.5em]
+  & \nabla(\phi\psi)=\phi\nabla\psi+\psi\nabla\phi \label{eq-2.8} \\[0.5em]
+  & \nabla\times(\bm{A}+\bm{B})=\nabla\times\bm{A}+\nabla\times\bm{B} \label{eq-2.9} \\[0.5em]
+  & \nabla(\bm{A}\cdot\bm{B})=(\bm{B}\cdot\nabla)\bm{A}+(\bm{A}\cdot\nabla)\bm{B}+\bm{A}\times(\nabla\times\bm{B})+\bm{B}\times(\nabla\times\bm{A}) \label{eq-2.10} \\[0.5em]
+  & \nabla\cdot(\bm{A}\times\bm{B})=\bm{B}\cdot(\nabla\times\bm{A})-\bm{A}\cdot(\nabla\times\bm{B}) \label{eq-2.11} \\[0.5em]
+  & \nabla\times(\bm{A}\times\bm{B})=(\bm{B}\cdot\nabla)\bm{A}-(\bm{A}\cdot\nabla)\bm{B}+\bm{A}(\nabla\cdot\bm{B})-\bm{B}(\nabla\cdot\bm{A}) \label{eq-2.12} \\[0.5em]
+  & \nabla\times(\phi\bm{A})=-\bm{A}\times\nabla\phi+\phi\nabla\times\bm{A} \label{eq-2.13} \\[0.5em]
+  & \nabla\cdot(\phi\bm{A})=\bm{A}\cdot\nabla\phi+\phi\nabla\bm{A} \label{eq-2.14} \\[0.5em]
+  & \nabla^2(\phi\psi)=\psi\nabla^2\phi+\phi\nabla^2\psi+2\nabla\phi\cdot\nabla\psi \label{eq-2.15} \\[0.5em]
+  & (\bm{A}\cdot\nabla)\phi=\bm{A}\cdot(\nabla\phi) \label{eq-2.16} \\[0.5em]
+  & (\bm{A}\cdot\nabla)\bm{B}=(\bm{A}\cdot\nabla B_x)\bm{e}_x+(\bm{A}\cdot\nabla B_y)\bm{e}_y+(\bm{A}\cdot\nabla B_z)\bm{e}_z \label{eq-2.17} \\[0.5em]
+  & (\bm{A}\cdot\nabla)\phi\bm{B}=\phi(\bm{A}\cdot\nabla)\bm{B}+\bm{B}(\bm{A}\cdot\nabla\phi) \label{eq-2.18}
+\end{align}
+
+\subsection{その他}
+\begin{align}
+  & (\nabla\times\bm{A})\times\bm{A}=(\bm{A}\cdot\nabla)\bm{A}-\frac{1}{2}\nabla(\bm{A}\cdot\bm{A}) \label{eq-2.19}
+\end{align}
+
+\subsection{証明}
+\paragraph{式(\ref{eq-2.1})}
+\begin{equation*}
+  \nabla\times(\nabla\phi)=(\nabla\times\nabla)\phi=0
+\end{equation*}
+\paragraph{式(\ref{eq-2.2})}
+式(\ref{eq-1.1})より、$\nabla$を$\bm{A}$の左に置くことに注意する。
+\paragraph{式(\ref{eq-2.3})}
+式(\ref{eq-1.2})より、$\nabla$を$\bm{A}$の左に置くことに注意する。
+\paragraph{式(\ref{eq-2.4})}
+\begin{align*}
+  LHS &= \nabla_\phi\cdot(\phi\nabla\psi)+\nabla_\psi\cdot(\phi\nabla\psi) \\
+  &= (\nabla_\phi\cdot\phi)\cdot\nabla\psi+\phi(\nabla_\psi\cdot(\nabla\psi))=RHS
+\end{align*}
+\paragraph{式(\ref{eq-2.6})}
+\begin{align*}
+  LHS &= \nabla_\psi\cdot(\nabla(\phi\psi))+\nabla_\phi\cdot(\phi\psi) \\
+  &= \nabla_\psi\cdot(\phi\nabla\psi+\psi\nabla\phi)+\nabla_\phi\cdot(\phi\nabla\psi+\psi\nabla\phi) \\
+  &= \phi\nabla^2\psi+\nabla\psi\cdot\nabla\phi+\nabla\phi\cdot\nabla\psi+\psi\nabla^2\phi \\
+  &= \phi\nabla^2\psi+2\nabla\phi\cdot\nabla\psi+\psi\nabla^2\phi
+\end{align*}
+\paragraph{式(\ref{eq-2.10})}
+\begin{equation*}
+  LHS=\nabla_A(\bm{A}\cdot\bm{B})+\nabla_B(\bm{A}\cdot\bm{B})
+\end{equation*}
+ここで、式(\ref{eq-1.2})から、
+\begin{align*}
+  & \bm{B}(\nabla_A\times\bm{A})=\nabla_A(\bm{A}\cdot\bm{B})-(\bm{B}\cdot\nabla_A)\bm{A} \\
+  & \bm{A}(\nabla_B\times\bm{B})=\nabla_B(\bm{A}\cdot\bm{B})-(\bm{A}\cdot\nabla_B)\bm{B}
+\end{align*}
+が成り立つので、これらの辺々を足して整理すると、
+\begin{align*}
+  & \nabla_A(\bm{A}\cdot\bm{B})+\nabla_B(\bm{A}\cdot\bm{B}) \\
+  &\qquad = \bm{B}\times(\nabla_A\times\bm{A})+(\bm{B}\cdot\nabla_A )\bm{A}+\bm{A}\times(\nabla_B\times\bm{B})+(\bm{A}\cdot\nabla_B)\bm{B} \\
+  &\qquad = (\bm{B}\cdot\nabla)\bm{A}+(\bm{A}\cdot\nabla)\bm{B}+\bm{A}\times(\nabla\times\bm{B})+\bm{B}\times(\nabla\times\bm{A})
+\end{align*}
+\paragraph{式(\ref{eq-2.11})}
+\begin{align*}
+  LHS &= \nabla_A\cdot(\bm{A}\times\bm{B})+\nabla_B\cdot(\bm{A}\times\bm{B})\qquad\gets 式(\ref{eq-1.1}) \\
+  &= \bm{B}\cdot(\nabla_A\times\bm{A})-\nabla_B(\bm{B}\times\bm{A}) \\
+  &= \bm{B}\cdot(\nabla_A\times\bm{A})-\bm{A}\cdot(\nabla_B\times\bm{B}) \\
+  &= \bm{B}\cdot(\nabla\times\bm{A})-\bm{A}\cdot(\nabla\times\bm{B})
+\end{align*}
+\paragraph{式(\ref{eq-2.12})}
+\begin{align*}
+  LHS &= \nabla_A\times(\bm{A}\times\bm{B})+\nabla_B\times(\bm{A}\times\bm{B})\qquad\gets 式(\ref{eq-1.2}) \\
+  &= (\nabla_A\cdot\bm{B})\bm{A}-(\nabla_A\cdot\bm{A})\bm{B}+{(\nabla_B\cdot\bm{B})\bm{A}-(\nabla_B\cdot\bm{A})\bm{B}} \\
+  &= (\bm{B}\cdot\nabla_A)\bm{A}-\bm{B}(\nabla_A\cdot\bm{A})+\bm{A}(\nabla_B\cdot\bm{})-(\bm{A}\cdot\nabla_B)\bm{B} \\
+  &= (\bm{}\cdot\nabla)A-\bm{B}(\nabla\bm{A})+\bm{A}(\nabla\bm{B})-(\bm{A}\cdot\nabla)\bm{B}
+\end{align*}
+\paragraph{式(\ref{eq-2.13})}
+\begin{align*}
+  LHS &= \nabla_{\phi}\times(\phi\bm{A})+\nabla_A\times(\phi\bm{A}) \\
+  &= \nabla_{\phi}\phi\times\bm{A}+\phi\nabla_A\times\bm{A} \\
+  &= \nabla\phi\times\bm{A}+\phi\nabla\times\bm{A} \\
+  &= -\bm{A}\times\nabla\phi+\phi\nabla\times\bm{A}
+\end{align*}
+\paragraph{式(\ref{eq-2.14})}
+\begin{align*}
+  LHS &= \nabla_{\phi}\cdot(\phi\bm{A})+\nabla_A\times(\phi\bm{A}) \\
+  &= \nabla_{\phi}\phi\cdot\bm{A}+\phi\nabla_A\cdot\bm{A} \\
+  &= \bm{A}\cdot\nabla\phi+\phi\nabla\bm{A}
+\end{align*}
+\paragraph{式(\ref{eq-2.19})}
+式(\ref{eq-2.10})より。
+
+\end{document}
